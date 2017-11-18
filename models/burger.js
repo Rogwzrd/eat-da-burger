@@ -6,13 +6,16 @@ var burger = {
            cb(res)
        })
    },
-    create: function(col, val, cb){
-       orm.create("burgers", col, val, function(res){
+    //this method throws an error when it is invoked. The val argument
+    //is being read as a column and not a value
+    create: function(val, cb){
+       orm.create('burgers', "burger_name", val, function(res){
            cb(res)
        })
     },
-    update: function(col, val, cb){
-        orm.update("burgers", col, val, function(res){
+    //unconfirmed as functional
+    update: function(id, cb){
+        orm.update("burgers", "id", val, function(res){
             cb(res);
         })
     }
