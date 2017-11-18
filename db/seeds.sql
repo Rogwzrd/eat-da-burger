@@ -1,10 +1,12 @@
 USE burgers_db;
 
-INSERT INTO burgers(burger_name, devoured)
-VALUES("cheese", false);
+INSERT INTO burgers(burger_name)
+VALUES("cheese");
 
-INSERT INTO burgers(burger_name, devoured)
-VALUES("double bacon", false);
+INSERT INTO burgers(burger_name)
+VALUES("double bacon");
 
-INSERT INTO burgers(burger_name, devoured)
-VALUES("black bean", false);
+INSERT INTO burgers(burger_name)
+VALUES("black bean");
+
+SELECT * FROM burgers;

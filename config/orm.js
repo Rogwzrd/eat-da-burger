@@ -2,23 +2,23 @@
 var connection = require("../config/connection.js");
 
 var orm = {
-    all: function(table, callback){
-        var queryString = "Select * From " + table + ";";
+    all: function(table, cb){
+        var queryString = "SELECT * FROM " + table + ";";
         connection.query(queryString, function(err, result){
             if (err) throw err;
-            callback(result)
+            cb(result)
         })
     },
 
-    create: function(table, col, val, callback){
-        var queryString = "INSERT INTO ?(?) VALUES(?)";
+    create: function(table, col, val, cb){
+        var queryString = "INSERT INTO ? ( ? ) VALUES( ? )";
         connection.query(queryString,[table, col, val], function(err, result){
             if (err) throw err;
-            callback(result)
+            cb(result)
         })
     },
 
-    update: function(table, col, val, condition, callback){
+    update: function(table, col, val, condition, cb){
         var queryString = "UPDATE ? SET ? = ? WHERE ?";
         console.log("this is the table ", table);
         console.log("this is the column ", col);
@@ -26,15 +26,7 @@ var orm = {
         console.log("this is the condition ", condition);
         connection.query(queryString, [table, col1, value, condition], function(err, result){
             if (err) throw err;
-            callback(result)
-        })
-    },
-
-    delete: function(table, condition, callback){
-        var queryString = "DELETE FROM ? WHERE ?";
-        connection.query(queryString, [table, condition], function(err, result){
-            if (err) throw err;
-            callback(result)
+            cb(result)
         })
     }
 };
